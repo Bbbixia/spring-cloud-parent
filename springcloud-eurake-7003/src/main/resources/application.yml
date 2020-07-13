@@ -1,0 +1,34 @@
+server:
+  port: 7003
+
+
+eureka:
+  instance:
+    hostname: eureka7003.com     #eureka服务器的实例名称,在hosts下配置的名称
+  client:
+    #false表示不向注册中心注册自己
+    register-with-eureka: false
+    #false表示自己端就是注册中心，职责就是维护实例，不需要检索服务
+    fetch-registry: false
+    service-url:
+      #设置与eureka server 交互的地址查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://zpc:123456@eureka7001.com:7001/eureka
+  server:
+    #自我保护，就是短时间内服务大量下线，eureka自动开启的机制，不会马上把服务剔除（可能是网络原因或者什么导致，并非服务不可用）
+    #关闭自我保护，保证不可用的服务被马上剔除
+    enable-self-preservation: false
+    #设置保护时间，时间到，把服务下线
+    eviction-interval-timer-in-ms: 10000
+
+spring:
+  #  application:
+  #    name: app-eureka-center
+  #security认证登录
+  security:
+    basic:
+      enable:  true #开启基于httpbasic的认证
+    user:
+      name: zpc
+      password: 123456
+  application:
+    name: eureka-server7003

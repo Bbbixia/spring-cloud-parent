@@ -1,0 +1,71 @@
+server:
+  port: 8003
+  tomcat:
+    #指定编码
+    uri-encoding: utf-8
+#spring配置
+spring:
+  application:
+    name: cloud-payment  #项目名称，最好不要变动注册eureka就是用这个名字
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.1.191:3308/dbpayment?characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #  druid连接池 数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    #zipkin的配置
+#  zipkin:
+#    base-url: http://localhost:9411  #zip的地址
+#  sleuth:
+#    sampler:
+#      #采样率介于0-1之间，如果是1，则表示全部采集
+#      probability:  1
+  #rabbitmq的配置
+#  rabbitmq:
+#    host: 192.168.1.191
+#    port: 5672    #15672是管理的端口
+#    username: guest
+#    password: guest
+#    virtual-host: /
+#mybatis的配置:
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location:  classpath:mybatis/Mybatis-config.xml
+  type-aliases-package: com.eiletxie.springcloud.domain
+
+#eureka配置
+eureka:
+  client:
+    #表示是否将自己注册进eureka
+    register-with-eureka: true
+    #是否从eureka抓取已有的注册信息，默认为true,单点无所谓，但是集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    #表示入注的位置
+    service-url:
+      #集群
+      defaultZone: http://zpc:123456@eureka7001.com:7001/eureka/,http://zpc:123456@eureka7003.com:7003/eureka/
+  #修改主机名称
+  instance:
+    instance-id: payment8003
+    prefer-ip-address: true   #访问路径可以显示ip地址
+    #eureka客户端向服务器发送心跳的时间间隔（单位：秒 默认30秒）
+    lease-expiration-duration-in-seconds: 30
+    #eureka服务端在收到最后一次心跳后等待时间上线（单位：秒 默认90秒） 超时剔除服务
+    lease-renewal-interval-in-seconds: 90
