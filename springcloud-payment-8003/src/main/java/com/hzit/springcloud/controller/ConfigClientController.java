@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * author biXia
- * create 2020-07-13-20:33
+ * create 2020-07-13-20:33s
+ * 此类是用于验证刷新配置功能的
  */
 //@Slf4j
 //@RestController

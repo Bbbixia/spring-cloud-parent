@@ -17,4 +17,11 @@
     update_by
   </sql>
 
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from mch_info
+        where mch_id = #{mchId,jdbcType=VARCHAR}
+    </select>
+
 </mapper>
