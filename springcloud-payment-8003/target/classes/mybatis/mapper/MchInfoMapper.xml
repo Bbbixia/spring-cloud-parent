@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzit.springcloud.mapper.MchInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hzit.springcloud.domain.MchInfo">
+        <id column="mch_id" property="mchId" jdbcType="VARCHAR"/>
+        <result column="mch_name" property="mchName" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="CHAR"/>
+        <result column="req_key" property="reqKey" jdbcType="VARCHAR"/>
+        <result column="resp_key" property="respKey" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="update_by" property="updateBy" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    mch_id, mch_name, status, req_key, resp_key, create_time, update_time, create_by,
+    update_by
+  </sql>
+
+</mapper>

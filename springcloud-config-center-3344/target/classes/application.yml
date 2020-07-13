@@ -1,0 +1,42 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: clooud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Bbbixia/spintcloud-config
+          ##搜索目录
+      #          search-paths:
+      #            - springcloud-config
+      #          username: 414683076@qq.com 用户名和密码不用读取
+      #          password:          用户名和密码不用读取
+      #        读取分支
+      label: master
+  #rabbitmq的配置
+  rabbitmq:
+    host: 192.168.1.191
+    port: 5672    #15672是管理的端口
+    username: guest
+    password: guest
+    virtual-host: /
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://zpc:123456@eureka7001.com:7001/eureka,http://zpc:123456@eureka7003.com:7003/eureka
+  instance:
+    instance-id: springconfig3344
+
+#rabbitmq相关配置，暴露bus刷新配置的端点  一般来说需要暴露刷新都需要actuator包的支持
+management:
+  endpoints:  #暴露bus刷新配置的端点
+    web:
+      exposure:
+        include: 'bus-refresh'
+#手动刷新
+ # 只通知3355  curl | -X POST  "http://localhost:3344/autuator/bus-refresh/config-client:3355"
