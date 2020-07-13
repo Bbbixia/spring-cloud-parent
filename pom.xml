@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>springcloud-order-8002</module>
+        <module>springcloud-payment-8003</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
