@@ -10,7 +10,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.1.191:3308/dbpayment?characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://192.168.1.191:3308/dbpayment?characterEncoding=utf8&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     #  druid连接池 数据源其他配置
@@ -69,3 +69,13 @@ eureka:
     lease-expiration-duration-in-seconds: 30
     #eureka服务端在收到最后一次心跳后等待时间上线（单位：秒 默认90秒） 超时剔除服务
     lease-renewal-interval-in-seconds: 90
+
+ribbon :
+  #指的是建立连接所有的时间，适用于网络状况正常的情况下，两端所使用的时间
+  ReadTimeout:  2000
+  #指的是建立连接后从服务端读取到可用资源所用的时间，超时时间
+  ConnecTimeout:  2000
+logging:
+  level:
+    #以配置类中的级别打印以debug模式打印日志 监控哪个接口
+    com.hzit.springcloud.client.IApliayClient: debug

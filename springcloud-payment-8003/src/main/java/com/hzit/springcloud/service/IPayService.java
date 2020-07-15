@@ -1,6 +1,8 @@
 package com.hzit.springcloud.service;
 
-import com.hzit.springcloud.req.PayReq;
+import com.hzit.springcloud.req.PaymentReq;
+import com.hzit.springcloud.resp.CommonResult;
+import com.hzit.springcloud.resp.PayResultData;
 
 /**
  * author biXia
@@ -14,5 +16,5 @@ public interface IPayService
      * 处理支付请求
      * @param payReq
      */
-     void Pay(PayReq payReq) throws Exception;
+    CommonResult<PayResultData> Pay(PaymentReq payReq) throws Exception;
 }

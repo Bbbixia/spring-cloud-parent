@@ -12,6 +12,13 @@
     <artifactId>springcloud-payment-8003</artifactId>
 
     <dependencies>
+
+        <!-- 自己项目中的公共包-->
+        <dependency>
+            <groupId>com.hzit.business</groupId>
+            <artifactId>springcloud-common-7999</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 <!--hibernate-validator  start-->
         <!--hibernate-validator校验包-->
         <dependency>
@@ -31,12 +38,7 @@
             <version>6.1.0.Final</version>
         </dependency>
 <!--hibernate-validator  end-->
-        <!-- 支付宝api,用于对接支付宝接口-->
-        <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-            <version>4.10.58.ALL</version>
-        </dependency>
+
         <!--redis-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,10 +106,10 @@
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>-->
         <!--springboot 整合fegnin客户端-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!--eureka client-->
         <dependency>

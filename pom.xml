@@ -8,6 +8,8 @@
         <module>springcloud-eureka-7001</module>
         <module>springcloud-eurake-7003</module>
         <module>springcloud-config-center-3344</module>
+        <module>springcloud-order-alipay-8006</module>
+        <module>springcloud-common-7999</module>
 
     </modules>
     <parent>
